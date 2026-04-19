@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // dotenv.config({ path: path.resolve(__dirname, '../../.env') });
-dotenv.config();
+dotenv.config()
 
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
@@ -49,7 +49,16 @@ const envSchema = z.object({
 const parsed = envSchema.safeParse(process.env);
 
 if (!parsed.success) {
-  console.error('❌ Invalid environment variables:', parsed.error.flatten().fieldErrors);
+  console.error("❌ ENV VALIDATION FAILED");
+  console.error(parsed.error.flatten().fieldErrors);
+
+  // 👇 ADD THIS (important debug)
+  console.log("🔍 RAW ENV CHECK:", {
+    MONGODB_URI: process.env.MONGODB_URI,
+    JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET ? "OK" : "MISSING",
+    JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET ? "OK" : "MISSING",
+  });
+
   process.exit(1);
 }
 
