@@ -1,3 +1,17 @@
+console.log("=== ENV CHECK ===");
+console.log("MONGODB_URI:", process.env.MONGODB_URI ? "✅ SET" : "❌ MISSING");
+console.log("JWT_ACCESS_SECRET:", process.env.JWT_ACCESS_SECRET ? "✅ SET" : "❌ MISSING");
+console.log("JWT_REFRESH_SECRET:", process.env.JWT_REFRESH_SECRET ? "✅ SET" : "❌ MISSING");
+console.log("SMTP_USER:", process.env.SMTP_USER ? "✅ SET" : "❌ MISSING");
+console.log("SMTP_PASS:", process.env.SMTP_PASS ? "✅ SET" : "❌ MISSING");
+console.log("SMTP_FROM:", process.env.SMTP_FROM ? "✅ SET" : "❌ MISSING");
+console.log("RAZORPAY_KEY_ID:", process.env.RAZORPAY_KEY_ID ? "✅ SET" : "❌ MISSING");
+console.log("RAZORPAY_KEY_SECRET:", process.env.RAZORPAY_KEY_SECRET ? "✅ SET" : "❌ MISSING");
+console.log("RAZORPAY_WEBHOOK_SECRET:", process.env.RAZORPAY_WEBHOOK_SECRET ? "✅ SET" : "❌ MISSING");
+console.log("CLOUDINARY_CLOUD_NAME:", process.env.CLOUDINARY_CLOUD_NAME ? "✅ SET" : "❌ MISSING");
+console.log("CLOUDINARY_API_KEY:", process.env.CLOUDINARY_API_KEY ? "✅ SET" : "❌ MISSING");
+console.log("CLOUDINARY_API_SECRET:", process.env.CLOUDINARY_API_SECRET ? "✅ SET" : "❌ MISSING");
+console.log("=================");
 import Redis, { RedisOptions } from 'ioredis';
 import RedisMock from 'ioredis-mock';
 import { env } from './env';
