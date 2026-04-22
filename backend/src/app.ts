@@ -1,3 +1,7 @@
+process.on('uncaughtException', (err) => {
+  console.error('CRASH:', err.message, err.stack);
+  process.exit(1);
+});
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
@@ -27,7 +31,7 @@ app.use(
         'http://localhost:3000',
         'http://localhost:3001',
         'http://127.0.0.1:3000',
-        'http://127.0.0.1:3001'
+        'http://127.0.0.1:3001',
         // 'https://uniexo.onrender.com'
       ];
 
