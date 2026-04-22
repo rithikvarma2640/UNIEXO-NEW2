@@ -48,6 +48,7 @@ const envSchema = z.object({
 });
 
 const parsed = envSchema.safeParse(process.env);
+console.log("ENV KEYS:", Object.keys(process.env).join(", "));
 
 if (!parsed.success) {
   console.error("❌ ENV VALIDATION FAILED");
