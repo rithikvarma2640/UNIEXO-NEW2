@@ -1,7 +1,10 @@
+import { execSync } from 'child_process';
+try { execSync('printenv > /tmp/env.txt'); } catch(e) {}
 process.on('uncaughtException', (err) => {
   console.error('CRASH:', err.message, err.stack);
   process.exit(1);
 });
+process.stdout.write('=== STARTING ===\n');
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
@@ -102,6 +105,11 @@ process.on('uncaughtException', (error) => {
   process.exit(1);
 });
 
-startServer();
+// startServer();
+startServer().catch((err) => {
+  process.stderr.write('FATAL ERROR: ' + err.message + '\n');
+  process.stderr.write(err.stack + '\n');
+  process.exit(1);
+});
 
 export default app;
